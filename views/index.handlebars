@@ -1,0 +1,25 @@
+<div class="img-container">
+    <img src="/assets/img/clipart1241011resizeS.png" alt="burger_img" class="img">
+</div>
+<h1>Burger Devourer</h1>
+
+{{#each burger}}
+{{#dataValues}}
+<div class="left-burger">
+    <input class="new-burger" type="text" value="{{{id}}} + " " + {{{burger_name}}}" readonly></input>
+
+    <button type="button" class="btn btn-secondary">Devour it!</button>
+</div>
+<div class="right-burger">
+    <input class="gone-burger" type="text" value="{{{id}}} + " " + {{{burger_name}}}" disabled></input>
+</div>
+{{/dataValues}}
+{{/each}}
+
+<div class="textarea-container">
+    <form id="form-submit">
+        <textarea placeholder="enter your next burger"></textarea>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

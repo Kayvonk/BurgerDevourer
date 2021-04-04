@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(255,202,102);
+}
+
+.img-container, .textarea-container {
+    text-align: center;
+}
+
+.img {
+    margin-top: 2%;
+    width: 10%;
+}
+
+h1 {
+    text-align: center;
+    color: red;
+}
+
+textarea {
+    width: 300px;
+    height: 150px;
+}
+
+.left-burger {
+    float: left;
+}
+
+.right-burger{
+    float: right;
+}
