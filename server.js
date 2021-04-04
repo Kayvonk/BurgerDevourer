@@ -19,15 +19,6 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Initiate MySQL Connection.
-connection.connect((err) => {
-    if (err) {
-        console.error(`error connecting: ${err.stack}`);
-        return;
-    }
-    console.log(`connected as id ${connection.threadId}`);
-});
-
 // Import routes and give the server access to them.
 const routes = require('./controllers/burgers_controller');
 

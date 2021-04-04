@@ -3,22 +3,27 @@
 </div>
 <h1>Burger Devourer</h1>
 
-{{#each burger}}
-{{#dataValues}}
+{{#each burgers}}
+{{#unless devoured}}
 <div class="left-burger">
-    <input class="new-burger" type="text" value="{{{id}}} + " " + {{{burger_name}}}" readonly></input>
+    <input class="new-burger" type="text" value="{{id}}. {{burger_name}}" readonly></input>
 
-    <button type="button" class="btn btn-secondary">Devour it!</button>
+    <button type="button" id="{{id}}" class="devour-btn btn btn-secondary">Devour it!</button>
 </div>
+{{/unless}}
+{{/each}}
+
+{{#each burgers}}
+{{#if devoured}}
 <div class="right-burger">
-    <input class="gone-burger" type="text" value="{{{id}}} + " " + {{{burger_name}}}" disabled></input>
+    <input class="gone-burger" type="text" value="{{id}}. {{burger_name}}" disabled></input>
 </div>
-{{/dataValues}}
+{{/if}}
 {{/each}}
 
 <div class="textarea-container">
     <form id="form-submit">
-        <textarea placeholder="enter your next burger"></textarea>
+        <textarea id="burger-textarea" placeholder="enter your next burger"></textarea>
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

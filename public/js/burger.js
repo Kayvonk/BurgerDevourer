@@ -1,33 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded! 🚀');
 
-    const newBurgerInput = document.querySelector('new-burger');
-    const goneBurgerInput = document.querySelector('gone-burger');
-    const formSubmitInput = document.getElementById('form-submit');
+
+    const textarea = document.getElementById('burger-textarea');
 
 
     // Handle when the customer form is submitted
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        const data = {
 
-
-        burger_name: formSubmitInput.value.trim(),
+            burger_name: textarea.value.trim(),
 
         }
-    fetch('/api/jobs', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-        .then(function () {
-            console.log("Success")
+        fetch('/api/burgers', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
         })
-        .catch((err) => console.error(err));
+            .then(function () {
+                console.log("Success")
+                window.location.reload()
+            })
+            .catch((err) => console.error(err));
 
-
+    }
     document
         .getElementById('form-submit')
         .addEventListener('submit', handleFormSubmit);
+
+    document.querySelectorAll('.devour-btn').forEach((button) => {
+        button.addEventListener('click', (e) => {
+
+            fetch('/api/burgers/' + button.id, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ devoured: true }),
+            })
+                .then(function () {
+                    console.log("Success")
+                    window.location.reload()
+                })
+                .catch((err) => console.error(err));
+
+
+        })
+    })
 });
