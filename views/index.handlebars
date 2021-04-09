@@ -3,28 +3,39 @@
 </div>
 <h1>Burger Devourer</h1>
 
-{{#each burgers}}
-{{#unless devoured}}
-<div class="left-burger">
-    <input class="new-burger" type="text" value="{{id}}. {{burger_name}}" readonly></input>
+<div class="container-fluid">
+    <div class="row">
 
-    <button type="button" id="{{id}}" class="devour-btn btn btn-secondary">Devour it!</button>
-</div>
-{{/unless}}
-{{/each}}
+        <div class="col-md-4">
+            {{#each burgers}}
+            {{#unless devoured}}
+            <div class="left-burger">
+                <input class="new-burger" type="text" value="{{id}}. {{burger_name}}" readonly></input>
 
-{{#each burgers}}
-{{#if devoured}}
-<div class="right-burger">
-    <input class="gone-burger" type="text" value="{{id}}. {{burger_name}}" disabled></input>
-</div>
-{{/if}}
-{{/each}}
-
-<div class="textarea-container">
-    <form id="form-submit">
-        <textarea id="burger-textarea" placeholder="enter your next burger"></textarea>
-        <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+                <button type="button" id="{{id}}" class="devour-btn btn btn-secondary">Devour it!</button>
+            </div>
+            <br><br>
+            {{/unless}}
+            {{/each}}
+        </div>
+        <div class="col-md-4">
+            <div class="textarea-container">
+                <form id="form-submit">
+                    <textarea id="burger-textarea" placeholder="enter your next burger"></textarea>
+                    <br>
+                    <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            {{#each burgers}}
+            {{#if devoured}}
+            <div class="right-burger">
+                <input class="gone-burger" type="text" value="{{id}}. {{burger_name}}" disabled></input>
+            </div>
+            <br><br>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
 </div>
